@@ -1,0 +1,55 @@
+.TH easyVIDOR 1
+.SH NAME
+easyVIDOR.sh \- Automate workflow for testing HDL files on the Arduino MKR Vidor 4000
+.SH SYNOPSIS
+.B ./easyVIDOR.sh
+.IR [OPTIONS]
+.SH DESCRIPTION
+.B easyVIDOR.sh
+This program can be used to create projects for the Arduino MKR VIDOR 4000. Once created, the 
+projects can be compiled using Quartus and flashed on the board for testing.
+.SH OPTIONS
+.TP
+.BR create \fI " " \fI <PROJECT_PATH> \fR " " \fI <PROJECT_NAME> \fR 
+This command is used to create a new project specifying its name and the path where the
+project folder will be created.
+e.g. ./easyVIDOR create /home/user MY_PROJECT
+ 
+.TP
+.BR add_file \fR " " \fI <PATH_TO_VHDL_FILE> \fR
+This command has to be launched from the main project directory. It allows the user to
+add a VHDL file in the project so that it can be compiled by Quartus
+.TP
+
+.BR compile \fR
+This command has to be launched from the main project directory. It compiles the project
+by using Quartus. After the synthesis is performed, the output bitstream is inverted in order
+to be interpreted correctly by the FPGA.
+.TP
+
+.BR flash \fR
+This command has to be launched from the main project directory. Once the projects has been
+compiled, then it can be flashed directly to the board by using this commands. It uses
+arduino-cli to perform the compilation of the Arduino sketch and its upload.
+.SH Example of full usage
+.BR ./easyVIDOR " " create " " /path/ " " myPROJECT
+.TP
+
+.BR cd " " myPROJECT
+.TP
+
+.BR ./easyVIDOR " " add_file " " /path-to-file/file_1.vhd
+.TP
+
+.BR ...
+.TP
+
+.BR ./easyVIDOR " " add_file " " /path-to-file/file_N.vhd
+.TP
+
+.BR ./easyVIDOR " " compile
+.TP
+
+.BR ./easyVIDOR " " flash
+.TP
+
