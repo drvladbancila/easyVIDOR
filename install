@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mkdir $HOME/.local/share/easyVIDOR
+cp tools/* $HOME/.local/share/easyVIDOR
+cp easyVIDOR.sh $HOME/.local/share/easyVIDOR
+cp man.1 $HOME/.local/share/easyVIDOR
+
+ln -s $HOME/.local/share/easyVIDOR/easyVIDOR.sh $HOME/.local/bin/easyVIDOR
