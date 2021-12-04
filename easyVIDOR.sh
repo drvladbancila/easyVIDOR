@@ -68,10 +68,9 @@ function compile_project {
 function flash_project {
     PROJ_PATH=$(pwd)
 
-    chmod +x $SOURCE_DIR/arduino-cli
-    $SOURCE_DIR/tools/arduino-cli core install arduino:samd
-    $SOURCE_DIR/tools/arduino-cli compile --fqbn arduino:samd:mkrvidor4000 $PROJ_PATH/arduino/arduino.ino
-    $SOURCE_DIR/tools/arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:samd:mkrvidor4000 $PROJ_PATH/arduino/arduino.ino && echo "[*] The program was uploaded successfully"
+    arduino-cli core install arduino:samd
+    arduino-cli compile --fqbn arduino:samd:mkrvidor4000 $PROJ_PATH/arduino/arduino.ino
+    arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:samd:mkrvidor4000 $PROJ_PATH/arduino/arduino.ino && echo "[*] The program was uploaded successfully"
 }
 
 SOURCE="${BASH_SOURCE[0]}"
